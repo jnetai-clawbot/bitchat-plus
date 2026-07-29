@@ -26,6 +26,9 @@ Location Changes:
 - MainActivity: location check can be skipped, location disabled doesn't block app
 - MainViewModel: added isLocationCheckSkipped state and skipLocationCheck() function
 - Location disabled callback now skips and continues instead of showing error
+- Location sharing toggle in About/Settings sheet (Share Location)
+- currentLocation and peerLocation StateFlows in LocationChannelManager
+- bearingTo extension function for direction calculation
 
 Google Play Services Removal:
 - Removed com.google.android.gms:play-services-location dependency from build.gradle.kts
@@ -33,6 +36,16 @@ Google Play Services Removal:
 - Removed FusedLocationProvider.kt (Google Play Services location provider)
 - LocationChannelManager now uses SystemLocationProvider only (native Android LocationManager)
 - Removed GoogleApiAvailability and ConnectionResult imports
+
+Private Chat & Location Sharing:
+- Long press on username/message opens private chat directly (no more action sheet)
+- PM envelope button always visible in header (opens MeshPeerList with all conversations)
+- Location sharing panel in PrivateChatSheet with:
+  - Your location (lat/lon)
+  - Their location (lat/lon) when both have location enabled
+  - Distance in meters
+  - Direction (N/NE/E/SE/S/SW/W/NW) with bearing degrees
+  - "Open in Maps" button (opens Google Maps or geo: intent)
 
 About Section:
 - Added "Made by jnetai.com" text in footer

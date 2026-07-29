@@ -71,7 +71,7 @@ jobs:
           echo "apk_path=BitChat-Plus.apk" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@c062c08b8158e2b2f0f4b72b4a0b2c6a2c9c9c9c # v2
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ env.RELEASE_TAG }}
           name: "BitChat Plus ${{ env.RELEASE_TAG }}"
@@ -80,10 +80,11 @@ jobs:
 
             Privacy-first Bluetooth mesh messenger. No location required.
 
-            ### Changes
+            ### Features
             - Bluetooth-only operation (no location required)
             - Dark blue theme
-            - Optional location features
+            - Optional location sharing with direction, distance, and map link
+            - Private chat with long-press on username
             - Made by jnetai.com
 
             ### Install

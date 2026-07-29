@@ -1,0 +1,37 @@
+
+
+
+
++ Thought: 1.4s
+# Todos
+[✓] Add location sharing toggle in About/Settings sheet
+[✓] Modify long press on username to directly open private chat
+[✓] Add PM section in header to show all private conversations
+[✓] Add location sharing in private chat (direction, distance, lat/lon, map link)
+[✓] Ensure private messages are separate from group mesh
+[✓] Commit, push, trigger build, download release
++ Thought: 164ms
+Ready to test.
+All changes built and APKs downloaded to Release/ folder.
+Here's what was implemented:
+1. Location sharing toggle in About/Settings sheet - "Share Location" toggle that enables/disables LiveLocationPrivacyGate without crashing
+2. Long press on username/message now opens private chat directly (no more action sheet). Short tap still does @mention in group mesh.
+3. PM envelope button always visible in header (orange when unread, grey otherwise). Opens MeshPeerList with all private conversations.
+4. Location sharing panel in PrivateChatSheet - when both users have location enabled:
+- Your lat/lon
+- Their lat/lon
+- Distance in meters
+- Direction (N/NE/E/SE/S/SW/W/NW) with bearing degrees
+- "Open in Maps" button
+5. Private messages remain separate from group mesh - they use the existing PrivateChatSheet infrastructure which is already isolated from the public mesh timeline.
+
+
+GitHub: 
+https://github.com/jnetai-clawbot/bitchat-plus/releases
+
+
+
+
+
+
+
