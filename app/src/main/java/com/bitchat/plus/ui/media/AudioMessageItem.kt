@@ -32,6 +32,7 @@ fun AudioMessageItem(
     colorScheme: ColorScheme,
     timeFormatter: SimpleDateFormat,
     onNicknameClick: ((String) -> Unit)?,
+    onNicknameLongPress: ((String) -> Unit)? = null,
     onMessageLongPress: ((BitchatMessage) -> Unit)?,
     onCancelTransfer: ((BitchatMessage) -> Unit)?,
     modifier: Modifier = Modifier,
