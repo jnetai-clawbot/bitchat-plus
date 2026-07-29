@@ -1,9 +1,9 @@
-package com.bitchat.android.service
+package com.bitchat.plus.service
 
 import android.os.Build
-import com.bitchat.android.model.RoutedPacket
-import com.bitchat.android.protocol.BitchatPacket
-import com.bitchat.android.protocol.MessageType
+import com.bitchat.plus.model.RoutedPacket
+import com.bitchat.plus.protocol.BitchatPacket
+import com.bitchat.plus.protocol.MessageType
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Assert.assertEquals

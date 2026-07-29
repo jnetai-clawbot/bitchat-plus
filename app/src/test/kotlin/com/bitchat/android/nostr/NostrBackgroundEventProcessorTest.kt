@@ -1,8 +1,8 @@
-package com.bitchat.android.nostr
+package com.bitchat.plus.nostr
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
-import com.bitchat.android.services.AppStateStore
+import com.bitchat.plus.services.AppStateStore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

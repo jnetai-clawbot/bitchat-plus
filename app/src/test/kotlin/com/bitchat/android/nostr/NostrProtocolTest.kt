@@ -1,4 +1,4 @@
-package com.bitchat.android.nostr
+package com.bitchat.plus.nostr
 
 import com.google.gson.Gson
 import org.junit.Assert.assertEquals

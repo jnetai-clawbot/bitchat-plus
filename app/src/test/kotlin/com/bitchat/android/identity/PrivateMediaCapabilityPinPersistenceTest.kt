@@ -1,8 +1,8 @@
-package com.bitchat.android.identity
+package com.bitchat.plus.identity
 
 import android.content.Context
-import com.bitchat.android.model.AuthenticatedPeerState
-import com.bitchat.android.model.PeerCapabilities
+import com.bitchat.plus.model.AuthenticatedPeerState
+import com.bitchat.plus.model.PeerCapabilities
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.After

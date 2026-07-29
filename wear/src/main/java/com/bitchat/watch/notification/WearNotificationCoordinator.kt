@@ -12,8 +12,8 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.Person
 import androidx.core.content.ContextCompat
-import com.bitchat.android.model.BitchatMessage
-import com.bitchat.android.ui.NotificationTextUtils
+import com.bitchat.plus.model.BitchatMessage
+import com.bitchat.plus.ui.NotificationTextUtils
 import com.bitchat.watch.MainActivity
 import com.bitchat.watch.R
 import com.bitchat.watch.ui.WearChatState

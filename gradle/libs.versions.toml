@@ -45,8 +45,7 @@ okhttp = "5.4.0"
 tor-android-binary = "0.4.4.6"
 
 
-# Google Play Services
-gms-location = "21.4.0"
+# Google Play Services - removed for BitChat Plus (no Google services)
 
 # WorkManager
 work-runtime = "2.10.1"
@@ -125,8 +124,7 @@ tor-android-binary = { module = "org.torproject:tor-android-binary", version.ref
 
 # Tor (embed) intentionally not pinned yet; add once repo is chosen
 
-# Google Play Services
-gms-location = { module = "com.google.android.gms:play-services-location", version.ref = "gms-location" }
+# Google Play Services - removed for BitChat Plus
 
 # WorkManager
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "work-runtime" }

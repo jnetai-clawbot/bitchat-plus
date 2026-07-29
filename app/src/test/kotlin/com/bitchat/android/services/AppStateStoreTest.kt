@@ -1,7 +1,7 @@
-package com.bitchat.android.services
+package com.bitchat.plus.services
 
-import com.bitchat.android.model.BitchatMessage
-import com.bitchat.android.model.DeliveryStatus
+import com.bitchat.plus.model.BitchatMessage
+import com.bitchat.plus.model.DeliveryStatus
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse

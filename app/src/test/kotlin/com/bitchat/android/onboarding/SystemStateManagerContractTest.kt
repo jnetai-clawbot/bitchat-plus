@@ -1,4 +1,4 @@
-package com.bitchat.android.onboarding
+package com.bitchat.plus.onboarding
 
 import android.app.Application
 import android.bluetooth.BluetoothManager

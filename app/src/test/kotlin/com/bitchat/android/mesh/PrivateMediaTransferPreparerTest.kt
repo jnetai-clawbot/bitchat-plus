@@ -1,11 +1,11 @@
-package com.bitchat.android.mesh
+package com.bitchat.plus.mesh
 
-import com.bitchat.android.model.BitchatFilePacket
-import com.bitchat.android.model.NoisePayload
-import com.bitchat.android.model.NoisePayloadType
-import com.bitchat.android.protocol.BitchatPacket
-import com.bitchat.android.protocol.MessageType
-import com.bitchat.android.noise.AuthenticatedNoiseSession
+import com.bitchat.plus.model.BitchatFilePacket
+import com.bitchat.plus.model.NoisePayload
+import com.bitchat.plus.model.NoisePayloadType
+import com.bitchat.plus.protocol.BitchatPacket
+import com.bitchat.plus.protocol.MessageType
+import com.bitchat.plus.noise.AuthenticatedNoiseSession
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -167,8 +167,8 @@ class PrivateMediaTransferPreparerTest {
         var finalized = false
         var fragmented = false
         val absolutePayloadUpperBound =
-            com.bitchat.android.util.AppConstants.Fragmentation.MAX_FRAGMENTS_PER_ID *
-                com.bitchat.android.util.AppConstants.Fragmentation.MAX_FRAGMENT_SIZE
+            com.bitchat.plus.util.AppConstants.Fragmentation.MAX_FRAGMENTS_PER_ID *
+                com.bitchat.plus.util.AppConstants.Fragmentation.MAX_FRAGMENT_SIZE
         val preparer = PrivateMediaTransferPreparer(
             senderID = senderID,
             ttl = 7u,

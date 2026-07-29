@@ -1,8 +1,8 @@
-package com.bitchat.android.services
+package com.bitchat.plus.services
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
-import com.bitchat.android.identity.SecureIdentityStateManager
+import com.bitchat.plus.identity.SecureIdentityStateManager
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse

@@ -1,4 +1,4 @@
-package com.bitchat.android.util
+package com.bitchat.plus.util
 
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertEquals

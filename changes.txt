@@ -1,0 +1,57 @@
+BitChat Plus - Changes Log
+===========================
+
+v1.0.0 - Initial Release
+-------------------------
+- Created BitChat Plus from original BitChat source
+- Package renamed from com.bitchat.android to com.bitchat.plus
+- Application ID: com.bitchat.plus
+- Root project name: bitchat-plus
+
+Theme Changes:
+- Changed all green colors (0xFF00C851, 0xFF4CAF50, 0xFF32D74B, 0xFF248A3D) to dark blue (0xFF1A73E8, 0xFF1565C0)
+- Updated DarkBitchatColorScheme: primary 0xFF1A73E8, surface 0xFF0E1218, surfaceVariant 0xFF181C24
+- Updated LightBitchatColorScheme: primary 0xFF1565C0, surface 0xFFF2F4F8, surfaceVariant 0xFFE7E9F0
+- Updated all hardcoded green references in onboarding screens, debug settings, security sheets, media components
+
+Bluetooth Changes:
+- Removed location requirement from BluetoothPermissionManager (no longer checks ACCESS_COARSE_LOCATION/ACCESS_FINE_LOCATION)
+- Added android:usesPermissionFlags="neverForLocation" to BLUETOOTH_SCAN in AndroidManifest.xml
+- Bluetooth now works without location on Android 12+ (API 31+)
+
+Location Changes:
+- Location is now OPTIONAL (not required for Bluetooth operation)
+- LocationCheckScreen now has a "Skip Location" button
+- LocationStatusManager updated to reflect optional nature
+- MainActivity: location check can be skipped, location disabled doesn't block app
+- MainViewModel: added isLocationCheckSkipped state and skipLocationCheck() function
+- Location disabled callback now skips and continues instead of showing error
+
+Google Play Services Removal:
+- Removed com.google.android.gms:play-services-location dependency from build.gradle.kts
+- Removed gms-location from libs.versions.toml
+- Removed FusedLocationProvider.kt (Google Play Services location provider)
+- LocationChannelManager now uses SystemLocationProvider only (native Android LocationManager)
+- Removed GoogleApiAvailability and ConnectionResult imports
+
+About Section:
+- Added "Made by jnetai.com" text in footer
+- Added "Check for Update" button (opens GitHub releases page)
+- Added "Share App" button (shares app link via Android share sheet)
+- Updated app_name to "BitChat Plus"
+- Updated about_tagline to "Privacy-first Bluetooth messenger"
+- Updated about_footer to include "Made by jnetai.com"
+
+GitHub Actions:
+- Created .github/workflows/build.yml for CI builds
+- Created .github/workflows/release.yml for signed releases
+- Removed old android-build.yml, release.yml, fetch-georelays.yml workflows
+- Release workflow signs APK with keystore from secrets
+- Release workflow creates GitHub Release with BitChat-Plus.apk
+
+Other Changes:
+- Updated strings.xml: location_services_optional, skip_location, updated location explanations
+- Updated lint-baseline.xml paths
+- Updated wear module build.gradle.kts paths
+- Updated gradle.properties: BITCHAT_PLUS_GITHUB_RELEASE_CERT_SHA256
+- Version reset to 1.0.0 (versionCode 1)

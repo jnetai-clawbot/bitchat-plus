@@ -1,8 +1,8 @@
-package com.bitchat.android.services
+package com.bitchat.plus.services
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
-import com.bitchat.android.model.BitchatMessage
+import com.bitchat.plus.model.BitchatMessage
 import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.runBlocking
 import org.junit.After

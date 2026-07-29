@@ -1,4 +1,4 @@
-package com.bitchat.android.onboarding
+package com.bitchat.plus.onboarding
 
 import android.Manifest
 import android.app.Application

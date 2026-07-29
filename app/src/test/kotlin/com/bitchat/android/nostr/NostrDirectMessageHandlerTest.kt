@@ -1,15 +1,15 @@
-package com.bitchat.android.nostr
+package com.bitchat.plus.nostr
 
 import android.os.Build
-import com.bitchat.android.services.AppStateStore
-import com.bitchat.android.services.ConversationRepository
-import com.bitchat.android.services.InMemoryConversationStorageCipher
-import com.bitchat.android.services.SeenMessageStore
-import com.bitchat.android.ui.ChatState
-import com.bitchat.android.ui.DataManager
-import com.bitchat.android.ui.MessageManager
-import com.bitchat.android.ui.NoiseSessionDelegate
-import com.bitchat.android.ui.PrivateChatManager
+import com.bitchat.plus.services.AppStateStore
+import com.bitchat.plus.services.ConversationRepository
+import com.bitchat.plus.services.InMemoryConversationStorageCipher
+import com.bitchat.plus.services.SeenMessageStore
+import com.bitchat.plus.ui.ChatState
+import com.bitchat.plus.ui.DataManager
+import com.bitchat.plus.ui.MessageManager
+import com.bitchat.plus.ui.NoiseSessionDelegate
+import com.bitchat.plus.ui.PrivateChatManager
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

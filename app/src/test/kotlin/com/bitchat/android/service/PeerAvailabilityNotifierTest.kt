@@ -1,4 +1,4 @@
-package com.bitchat.android.service
+package com.bitchat.plus.service
 
 import android.app.Notification
 import android.app.NotificationManager

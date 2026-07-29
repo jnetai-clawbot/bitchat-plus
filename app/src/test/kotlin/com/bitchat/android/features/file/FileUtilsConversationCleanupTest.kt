@@ -1,9 +1,9 @@
-package com.bitchat.android.features.file
+package com.bitchat.plus.features.file
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
-import com.bitchat.android.model.BitchatMessage
-import com.bitchat.android.model.BitchatMessageType
+import com.bitchat.plus.model.BitchatMessage
+import com.bitchat.plus.model.BitchatMessageType
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test

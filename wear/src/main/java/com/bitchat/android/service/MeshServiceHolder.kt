@@ -1,4 +1,4 @@
-package com.bitchat.android.service
+package com.bitchat.plus.service
 
 /**
  * Wear shim for the phone's MeshServiceHolder.

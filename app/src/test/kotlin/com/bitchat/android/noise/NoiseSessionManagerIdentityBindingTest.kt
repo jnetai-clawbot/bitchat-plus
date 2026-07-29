@@ -1,6 +1,6 @@
-package com.bitchat.android.noise
+package com.bitchat.plus.noise
 
-import com.bitchat.android.noise.southernstorm.protocol.Noise
+import com.bitchat.plus.noise.southernstorm.protocol.Noise
 import org.junit.After
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertFalse

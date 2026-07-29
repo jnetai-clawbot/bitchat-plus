@@ -1,9 +1,9 @@
-package com.bitchat.android.mesh
+package com.bitchat.plus.mesh
 
-import com.bitchat.android.model.RoutedPacket
-import com.bitchat.android.protocol.BitchatPacket
-import com.bitchat.android.protocol.MessageType
-import com.bitchat.android.protocol.SpecialRecipients
+import com.bitchat.plus.model.RoutedPacket
+import com.bitchat.plus.protocol.BitchatPacket
+import com.bitchat.plus.protocol.MessageType
+import com.bitchat.plus.protocol.SpecialRecipients
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout

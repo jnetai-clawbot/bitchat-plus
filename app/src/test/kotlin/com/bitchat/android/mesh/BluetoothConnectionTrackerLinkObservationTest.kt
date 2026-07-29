@@ -1,4 +1,4 @@
-package com.bitchat.android.mesh
+package com.bitchat.plus.mesh
 
 import android.bluetooth.BluetoothDevice
 import kotlinx.coroutines.CoroutineScope

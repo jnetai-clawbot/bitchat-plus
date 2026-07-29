@@ -48,8 +48,8 @@ import androidx.compose.ui.window.DialogProperties
 import androidx.wear.compose.material3.Icon
 import androidx.wear.compose.material3.MaterialTheme
 import androidx.wear.compose.material3.Text
-import com.bitchat.android.features.voice.AudioWaveformExtractor
-import com.bitchat.android.features.voice.VoiceWaveformCache
+import com.bitchat.plus.features.voice.AudioWaveformExtractor
+import com.bitchat.plus.features.voice.VoiceWaveformCache
 import com.bitchat.watch.ui.theme.ChatVisualTokens
 import com.bitchat.watch.ui.theme.LocalBitchatPalette
 import kotlinx.coroutines.delay
@@ -246,7 +246,7 @@ fun WaveformBars(
 ) {
     Canvas(modifier = modifier) {
         val bars = 32
-        val values = samples?.let { com.bitchat.android.features.voice.resampleWave(it, bars) }
+        val values = samples?.let { com.bitchat.plus.features.voice.resampleWave(it, bars) }
             ?: FloatArray(bars) { 0.3f }
         val barWidth = size.width / (bars * 2 - 1)
         for (i in 0 until bars) {

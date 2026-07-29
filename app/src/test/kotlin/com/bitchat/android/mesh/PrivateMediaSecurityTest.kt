@@ -1,8 +1,8 @@
-package com.bitchat.android.mesh
+package com.bitchat.plus.mesh
 
-import com.bitchat.android.model.AuthenticatedPeerState
-import com.bitchat.android.model.PeerCapabilities
-import com.bitchat.android.noise.AuthenticatedNoiseSession
+import com.bitchat.plus.model.AuthenticatedPeerState
+import com.bitchat.plus.model.PeerCapabilities
+import com.bitchat.plus.noise.AuthenticatedNoiseSession
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test

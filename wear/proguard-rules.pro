@@ -1,6 +1,6 @@
 # Gson reflection targets in the shared bitchat sources (persisted state payloads).
--keep class com.bitchat.android.favorites.** { *; }
--keep class com.bitchat.android.services.SeenMessageStore$* { *; }
+-keep class com.bitchat.plus.favorites.** { *; }
+-keep class com.bitchat.plus.services.SeenMessageStore$* { *; }
 -keepclassmembers class * {
     @com.google.gson.annotations.SerializedName <fields>;
 }

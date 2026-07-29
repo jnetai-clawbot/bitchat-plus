@@ -1,4 +1,4 @@
-package com.bitchat.android.wifiaware
+package com.bitchat.plus.wifiaware
 
 import android.net.ConnectivityManager
 import kotlinx.coroutines.CoroutineScope

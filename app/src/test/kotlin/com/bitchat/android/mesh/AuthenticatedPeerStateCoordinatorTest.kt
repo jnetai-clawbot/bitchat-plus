@@ -1,9 +1,9 @@
-package com.bitchat.android.mesh
+package com.bitchat.plus.mesh
 
-import com.bitchat.android.model.AuthenticatedPeerState
-import com.bitchat.android.model.PeerCapabilities
-import com.bitchat.android.noise.AuthenticatedNoiseSession
-import com.bitchat.android.noise.NoisePeerIdentity
+import com.bitchat.plus.model.AuthenticatedPeerState
+import com.bitchat.plus.model.PeerCapabilities
+import com.bitchat.plus.noise.AuthenticatedNoiseSession
+import com.bitchat.plus.noise.NoisePeerIdentity
 import java.security.MessageDigest
 import java.util.concurrent.CopyOnWriteArrayList
 import kotlinx.coroutines.CoroutineScope

@@ -1,7 +1,7 @@
-package com.bitchat.android.nostr
+package com.bitchat.plus.nostr
 
-import com.bitchat.android.geohash.GeohashChannel
-import com.bitchat.android.geohash.GeohashChannelLevel
+import com.bitchat.plus.geohash.GeohashChannel
+import com.bitchat.plus.geohash.GeohashChannelLevel
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue

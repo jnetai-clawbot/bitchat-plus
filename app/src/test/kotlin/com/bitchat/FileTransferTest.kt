@@ -1,8 +1,8 @@
 package com.bitchat
 
-import com.bitchat.android.model.BitchatFilePacket
-import com.bitchat.android.model.BitchatMessage
-import com.bitchat.android.model.BitchatMessageType
+import com.bitchat.plus.model.BitchatFilePacket
+import com.bitchat.plus.model.BitchatMessage
+import com.bitchat.plus.model.BitchatMessageType
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Test
@@ -146,7 +146,7 @@ class FileTransferTest {
             id = "test1",
             sender = "alice",
             senderPeerID = "12345678",
-            content = "/data/user/0/com.bitchat.android/files/images/photo.jpg",
+            content = "/data/user/0/com.bitchat.plus/files/images/photo.jpg",
             type = BitchatMessageType.Image,
             timestamp = Date(System.currentTimeMillis()),
             isPrivate = false
@@ -156,7 +156,7 @@ class FileTransferTest {
             id = "test2",
             sender = "bob",
             senderPeerID = "87654321",
-            content = "/data/user/0/com.bitchat.android/files/audio/voice.amr",
+            content = "/data/user/0/com.bitchat.plus/files/audio/voice.amr",
             type = BitchatMessageType.Audio,
             timestamp = Date(System.currentTimeMillis()),
             isPrivate = false
@@ -166,7 +166,7 @@ class FileTransferTest {
             id = "test3",
             sender = "charlie",
             senderPeerID = "11223344",
-            content = "/data/user/0/com.bitchat.android/files/documents/document.pdf",
+            content = "/data/user/0/com.bitchat.plus/files/documents/document.pdf",
             type = BitchatMessageType.File,
             timestamp = Date(System.currentTimeMillis()),
             isPrivate = false
@@ -175,7 +175,7 @@ class FileTransferTest {
         // When: Converting to display format (this would be done in MessageMutable)
         var result = imageMessage.content
         result = result.replace(
-            "/data/user/0/com.bitchat.android/files/images/photo.jpg",
+            "/data/user/0/com.bitchat.plus/files/images/photo.jpg",
             "[image] photo.jpg"
         )
 
@@ -237,7 +237,7 @@ class FileTransferTest {
 
         // Given: Large file size (simulated)
         val largeFileSize = 100L * 1024 * 1024 // 100MB
-        val maxAllowedSize = com.bitchat.android.util.AppConstants.Media.MAX_FILE_SIZE_BYTES
+        val maxAllowedSize = com.bitchat.plus.util.AppConstants.Media.MAX_FILE_SIZE_BYTES
 
         // When: Checking if file can be transferred
         val isAllowed = largeFileSize <= maxAllowedSize

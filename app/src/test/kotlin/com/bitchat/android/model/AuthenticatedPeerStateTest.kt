@@ -1,4 +1,4 @@
-package com.bitchat.android.model
+package com.bitchat.plus.model
 
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals

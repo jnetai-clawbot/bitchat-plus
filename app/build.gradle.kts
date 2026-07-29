@@ -7,8 +7,8 @@ plugins {
 }
 
 val githubReleaseCertSha256 = providers
-    .environmentVariable("BITCHAT_GITHUB_RELEASE_CERT_SHA256")
-    .orElse(providers.gradleProperty("BITCHAT_GITHUB_RELEASE_CERT_SHA256"))
+    .environmentVariable("BITCHAT_PLUS_GITHUB_RELEASE_CERT_SHA256")
+    .orElse(providers.gradleProperty("BITCHAT_PLUS_GITHUB_RELEASE_CERT_SHA256"))
     .orElse("")
 val normalizedGithubReleaseCertSha256 = githubReleaseCertSha256.get()
     .replace(":", "")
@@ -18,20 +18,20 @@ require(
     normalizedGithubReleaseCertSha256.isEmpty() ||
         normalizedGithubReleaseCertSha256.matches(Regex("[a-f0-9]{64}"))
 ) {
-    "BITCHAT_GITHUB_RELEASE_CERT_SHA256 must be a SHA-256 certificate fingerprint"
+    "BITCHAT_PLUS_GITHUB_RELEASE_CERT_SHA256 must be a SHA-256 certificate fingerprint"
 }
 
 android {
-    namespace = "com.bitchat.android"
+    namespace = "com.bitchat.plus"
     compileSdk = libs.versions.compileSdk.get().toInt()
     buildToolsVersion = libs.versions.buildTools.get()
 
     defaultConfig {
-        applicationId = "com.bitchat.droid"
+        applicationId = "com.bitchat.plus"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = 36
-        versionName = "1.7.5"
+        versionCode = 1
+        versionName = "1.0.0"
         buildConfigField(
             "String",
             "GITHUB_RELEASE_CERT_SHA256",
@@ -174,8 +174,7 @@ dependencies {
     // Only included in tor flavor to reduce APK size for standard builds
     // Note: AAR is kept in libs/ for reference, but libraries loaded from jniLibs/
 
-    // Google Play Services Location
-    implementation(libs.gms.location)
+    // Google Play Services Location - removed for BitChat Plus (Bluetooth-only, no Google services)
 
     // Security preferences
     implementation(libs.androidx.security.crypto)

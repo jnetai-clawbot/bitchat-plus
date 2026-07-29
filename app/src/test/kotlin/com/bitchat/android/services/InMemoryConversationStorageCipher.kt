@@ -1,4 +1,4 @@
-package com.bitchat.android.services
+package com.bitchat.plus.services
 
 import java.security.SecureRandom
 import javax.crypto.Cipher

@@ -1,10 +1,10 @@
 package com.bitchat.watch.ui
 
-import com.bitchat.android.model.BitchatFilePacket
-import com.bitchat.android.model.BitchatMessage
-import com.bitchat.android.model.BitchatMessageType
-import com.bitchat.android.model.DeliveryStatus
-import com.bitchat.android.services.AppStateStore
+import com.bitchat.plus.model.BitchatFilePacket
+import com.bitchat.plus.model.BitchatMessage
+import com.bitchat.plus.model.BitchatMessageType
+import com.bitchat.plus.model.DeliveryStatus
+import com.bitchat.plus.services.AppStateStore
 import com.bitchat.watch.mesh.WearMeshService
 import java.io.File
 import java.util.Date

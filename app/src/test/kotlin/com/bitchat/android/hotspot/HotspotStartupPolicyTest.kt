@@ -1,4 +1,4 @@
-package com.bitchat.android.hotspot
+package com.bitchat.plus.hotspot
 
 import android.net.wifi.p2p.WifiP2pManager
 import org.junit.Assert.assertEquals

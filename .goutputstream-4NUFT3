@@ -1,0 +1,57 @@
+BitChat Plus
+
+this should not require location to be turnt on and should work with just bluetooth and operate the same
+
+Current old BitChat (that uses location) source files can be found /home/jay/Documents/Scripts/Mobile-Apps/Bitchat/Source/bitchat-android/
+
+BitChat-Plus project location /home/jay/Documents/Scripts/Mobile-Apps/Bitchat/Source/BitChat-Plus/
+
+Remake this app from the old BitChat (using github actions and workflows with a unique package name of BitChat-plus that dosnt require location to be on and does not use external services (where possable) it must still work as a privacy messenger app but without google location and any tracking or analitics or usage data being sent home or to 3rd party service or server without breaking the functionality or ability to work, it must use just blutooth alone
+
+changhe all the green colours in the app (green theme) to a nice Blue colour, allow optional location that can be enabled manually if a user wants it on to find location of a user if both users have this option on then both maybe able to see there own and the user they are talking to location (aswell as a compas and distance so both may find each other), allow location to be turned off and on without causing any crash or error, if available simply show and if not then hide locator / compas on screen section.
+
+if location is turned on then auto show user location (not own i mean the uyser that enabled location) add a Turn on location toggle button that is used to enable / disable location regardless if enabled on device, if enabled on app it should proompt to allow (permissions) for device location so that it may work.
+
+use github workflows to build the app and put finally release in apk folder in the project location
+
+Dont edit this file
+
+Never change anything in Backup folders (if it exists) but you can use them as a read-only reference if a mistake is made and you need to fix something
+
+save changes to file(s) in question
+
+then after files are added / edited then save any changes made to changes.txt
+
+Implement persistent error handling and debugging throughout the project. Every failure, exception, or unexpected state should generate a clear error code, detailed debug output, and useful diagnostic information to help identify the exact cause quickly.
+Do not remove debugging systems after issues are fixed — keep all error codes, logging, stack traces, validation checks, and diagnostic tools permanently integrated so that any future bugs, crashes, or unexpected behaviour can be traced and resolved efficiently.
+
+always use same key-store for each app made via github workflows so it can update correctly without requiring uninstallation
+
+Save changes to changes.txt (create if not exists)
+
+tell me when ready to test (stay quiet after acknowledging you got the message / request / mission every time and stay quiet till its ready to test and respond only if fully complete  or if you need input from me or if I ask for an update)!
+
+when giving final github release link (where applicable), make sure it points to the newest release but without the tag or filename so I can see the correct location without direct downloading the file as thats best practice!
+
+each app needs an About section showing
+in about section it should say Made by jnetai.com 
+The full version number (same as github release version tag) also add a Check for update button (so internet permissions required) to check latest release version (tag in full)
+add a Share App button so users can share the app.
+ 
+each update should use same key store so the app can update and not require uninstall of the app to update it.
+
+each app should be dark centered themed and allow space at bottom so buttons or elements at the bottom of the app should not be cut off, it should look professional.
+
+app compatibility: apps needs to work on samsung s8 and onwards and google pixel 6 and onwards
+full path to Downloads is /storage/emulated/0/Download/ (called Downloads as an alias in android)
+
+in releases on github a meaningful name should be used for example Tetris.apk (no need for a debug version of any app or game for android just put the debug version as the main version!
+
+github api tokens / passwords etc can be found in /home/jay/Documents/Scripts/AI/openclaw/password-vault/
+
+build the releases via github actions / workflows (not locally)
+
+make sure it is made public on github and alsol download the latest release when ready to /home/jay/Documents/Scripts/Mobile-Apps/Bitchat/Source/BitChat-Plus/Release
+
+
+

@@ -3,11 +3,11 @@ package com.bitchat.watch.testhook
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import com.bitchat.android.model.RoutedPacket
-import com.bitchat.android.noise.NoiseSession
-import com.bitchat.android.protocol.BitchatPacket
-import com.bitchat.android.service.TransportBridgeService
-import com.bitchat.android.services.AppStateStore
+import com.bitchat.plus.model.RoutedPacket
+import com.bitchat.plus.noise.NoiseSession
+import com.bitchat.plus.protocol.BitchatPacket
+import com.bitchat.plus.service.TransportBridgeService
+import com.bitchat.plus.services.AppStateStore
 import com.bitchat.watch.mesh.WearMeshService
 import com.bitchat.watch.service.WearMeshForegroundService
 import kotlinx.coroutines.delay
@@ -237,7 +237,7 @@ object WearTestHookDriver {
         val contains = intent.getStringExtra("contains")
         val startTime = System.currentTimeMillis()
         val mesh = mesh(context)
-        val matches: (com.bitchat.android.model.BitchatMessage) -> Boolean = { msg ->
+        val matches: (com.bitchat.plus.model.BitchatMessage) -> Boolean = { msg ->
             msg.timestamp.time >= startTime &&
                 msg.senderPeerID != mesh.myPeerID &&
                 (contains == null || msg.content.contains(contains))

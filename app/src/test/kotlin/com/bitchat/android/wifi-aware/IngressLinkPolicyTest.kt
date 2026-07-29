@@ -1,4 +1,4 @@
-package com.bitchat.android.wifiaware
+package com.bitchat.plus.wifiaware
 
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertSame

@@ -40,9 +40,9 @@ import androidx.wear.compose.material3.Icon
 import androidx.wear.compose.material3.MaterialTheme
 import androidx.wear.compose.material3.ScreenScaffold
 import androidx.wear.compose.material3.Text
-import com.bitchat.android.model.BitchatMessage
-import com.bitchat.android.model.BitchatMessageType
-import com.bitchat.android.services.AppStateStore
+import com.bitchat.plus.model.BitchatMessage
+import com.bitchat.plus.model.BitchatMessageType
+import com.bitchat.plus.services.AppStateStore
 import com.bitchat.watch.mesh.WearMeshService
 import com.bitchat.watch.ui.media.FileMessageChip
 import com.bitchat.watch.ui.media.FullScreenImageViewer

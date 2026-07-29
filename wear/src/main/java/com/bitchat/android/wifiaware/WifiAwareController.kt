@@ -1,4 +1,4 @@
-package com.bitchat.android.wifiaware
+package com.bitchat.plus.wifiaware
 
 /**
  * Wear shim for the phone's WifiAwareController.

@@ -1,10 +1,10 @@
-package com.bitchat.android.services
+package com.bitchat.plus.services
 
 import android.content.Context
 import android.os.Build
-import com.bitchat.android.identity.SecureIdentityStateManager
-import com.bitchat.android.mesh.MeshService
-import com.bitchat.android.mesh.PeerInfo
+import com.bitchat.plus.identity.SecureIdentityStateManager
+import com.bitchat.plus.mesh.MeshService
+import com.bitchat.plus.mesh.PeerInfo
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse

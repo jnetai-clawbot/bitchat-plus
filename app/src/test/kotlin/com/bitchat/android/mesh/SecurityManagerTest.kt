@@ -1,14 +1,14 @@
-package com.bitchat.android.mesh
+package com.bitchat.plus.mesh
 
 import android.os.Build
-import com.bitchat.android.crypto.EncryptionService
-import com.bitchat.android.model.IdentityAnnouncement
-import com.bitchat.android.model.RoutedPacket
-import com.bitchat.android.noise.NoiseHandshakeProcessingResult
-import com.bitchat.android.noise.NoisePeerIdentity
-import com.bitchat.android.noise.NoiseSessionError
-import com.bitchat.android.protocol.BitchatPacket
-import com.bitchat.android.protocol.MessageType
+import com.bitchat.plus.crypto.EncryptionService
+import com.bitchat.plus.model.IdentityAnnouncement
+import com.bitchat.plus.model.RoutedPacket
+import com.bitchat.plus.noise.NoiseHandshakeProcessingResult
+import com.bitchat.plus.noise.NoisePeerIdentity
+import com.bitchat.plus.noise.NoiseSessionError
+import com.bitchat.plus.protocol.BitchatPacket
+import com.bitchat.plus.protocol.MessageType
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertFalse
@@ -428,7 +428,7 @@ class SecurityManagerTest {
         // 1. Initial Announce (Fresh)
         val packet1 = BitchatPacket(
             type = MessageType.ANNOUNCE.value,
-            ttl = com.bitchat.android.util.AppConstants.MESSAGE_TTL_HOPS, // 7u
+            ttl = com.bitchat.plus.util.AppConstants.MESSAGE_TTL_HOPS, // 7u
             senderID = unknownPeerID,
             payload = payload
         )
@@ -439,11 +439,11 @@ class SecurityManagerTest {
         assertTrue("First ANNOUNCE should be accepted", securityManager.validatePacket(packet1, unknownPeerID))
         
         // 2. Relayed Duplicate (Lower TTL)
-        val packet2 = packet1.copy(ttl = (com.bitchat.android.util.AppConstants.MESSAGE_TTL_HOPS - 1u).toUByte())
+        val packet2 = packet1.copy(ttl = (com.bitchat.plus.util.AppConstants.MESSAGE_TTL_HOPS - 1u).toUByte())
         assertFalse("Relayed duplicate ANNOUNCE should be rejected", securityManager.validatePacket(packet2, unknownPeerID))
         
         // 3. Direct Duplicate (Max TTL)
-        val packet3 = packet1.copy(ttl = com.bitchat.android.util.AppConstants.MESSAGE_TTL_HOPS)
+        val packet3 = packet1.copy(ttl = com.bitchat.plus.util.AppConstants.MESSAGE_TTL_HOPS)
         assertTrue("Fresh duplicate ANNOUNCE should be accepted", securityManager.validatePacket(packet3, unknownPeerID))
     }
 
@@ -556,7 +556,7 @@ class SecurityManagerTest {
 
         securityManager.cleanupOldData(
             System.currentTimeMillis() +
-                com.bitchat.android.util.AppConstants.Security.KEY_EXCHANGE_DEDUP_TIMEOUT_MS + 1_000
+                com.bitchat.plus.util.AppConstants.Security.KEY_EXCHANGE_DEDUP_TIMEOUT_MS + 1_000
         )
 
         assertTrue("Expired dedup entries must not block a delayed retry",

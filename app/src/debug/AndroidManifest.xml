@@ -8,7 +8,7 @@
              Exported intentionally so `adb shell am broadcast` can reach it;
              never shipped in release builds. -->
         <receiver
-            android:name="com.bitchat.android.testhook.TestHookReceiver"
+            android:name="com.bitchat.plus.testhook.TestHookReceiver"
             android:exported="true"
             tools:ignore="ExportedReceiver">
             <intent-filter>

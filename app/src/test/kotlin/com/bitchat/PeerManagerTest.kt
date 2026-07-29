@@ -1,7 +1,7 @@
 package com.bitchat
 
-import com.bitchat.android.mesh.PeerManager
-import com.bitchat.android.model.PeerCapabilities
+import com.bitchat.plus.mesh.PeerManager
+import com.bitchat.plus.model.PeerCapabilities
 import junit.framework.TestCase.assertEquals
 import org.junit.Test
 

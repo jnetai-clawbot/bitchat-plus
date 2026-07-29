@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">bitchat</string>
+    <string name="app_name">BitChat Plus</string>
     <string name="permission_bluetooth_rationale">Bluetooth permission is required for peer-to-peer messaging without internet.</string>
     <string name="permission_location_rationale">Location permission is required to discover nearby devices via Bluetooth.</string>
     <string name="permission_notification_rationale">Notification permission is required to alert you of new messages.</string>
@@ -145,7 +145,7 @@
   <string name="cd_pick_file">Pick file</string>
 
   <!-- About sheet -->
-  <string name="about_tagline">The sidegroup chat</string>
+    <string name="about_tagline">Privacy-first Bluetooth messenger</string>
 
   <!-- About sheet: tabs -->
   <string name="about_tab_info">Info</string>
@@ -210,7 +210,7 @@
   <string name="about_last">Last: %1$s</string>
   <string name="about_emergency_title">Panic Mode</string>
   <string name="about_debug_settings">Debug Settings</string>
-  <string name="about_footer">Open Source • Privacy First • Decentralized</string>
+    <string name="about_footer">Open Source • Privacy First • Decentralized • Made by jnetai.com</string>
   <string name="close_plain">Close</string>
   <string name="cd_privacy_protected">Privacy Protected</string>
   <string name="cancel_lower">Cancel</string>
@@ -477,11 +477,12 @@
   <string name="debug_role_client">As client (we connect)</string>
 
   <!-- Onboarding screens -->
-  <string name="location_services_required">Location Services Required</string>
+    <string name="location_services_optional">Location Services (Optional)</string>
+    <string name="skip_location">Skip Location</string>
   <string name="privacy_first">Privacy First</string>
-  <string name="location_explanation">bitchat does NOT track your location.\n\nLocation services are required for Bluetooth scanning and for the Geohash chat feature.</string>
-  <string name="location_needs_for">bitchat needs location services for:</string>
-  <string name="location_needs_bullets">• Bluetooth device scanning\n• Discovering nearby users on mesh network\n• Geohash chat feature\n• No tracking or location collection</string>
+    <string name="location_explanation">BitChat Plus does NOT track your location.\n\nLocation services are optional and only needed if you want to use the Geohash chat feature or share your location with other users.</string>
+    <string name="location_needs_for">BitChat Plus can use location for:</string>
+    <string name="location_needs_bullets">• Geohash chat feature (optional)\n• Sharing location with other users (optional)\n• No tracking or location collection\n• Bluetooth works without location</string>
   <string name="background_location_required_title">Background Location Recommended</string>
   <string name="background_location_required_subtitle">Optional, improves mesh reliability</string>
   <string name="background_location_explanation">Android recommends background location so bitchat can scan for nearby devices while the app is not open. This keeps the mesh alive after reboot.</string>

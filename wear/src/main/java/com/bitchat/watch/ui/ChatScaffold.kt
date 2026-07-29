@@ -38,7 +38,7 @@ import androidx.wear.compose.material3.ScreenScaffold
 import androidx.wear.compose.material3.Text
 import androidx.wear.compose.material3.lazy.rememberTransformationSpec
 import androidx.wear.compose.material3.lazy.transformedHeight
-import com.bitchat.android.model.BitchatMessage
+import com.bitchat.plus.model.BitchatMessage
 import com.bitchat.watch.ui.theme.BitchatMotion
 import com.bitchat.watch.ui.theme.ChatVisualTokens
 import com.bitchat.watch.ui.theme.LocalBitchatPalette

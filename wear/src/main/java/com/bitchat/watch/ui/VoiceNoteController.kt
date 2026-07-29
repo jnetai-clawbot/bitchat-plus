@@ -9,8 +9,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
-import com.bitchat.android.features.voice.VoiceRecorder
-import com.bitchat.android.features.voice.normalizeAmplitudeSample
+import com.bitchat.plus.features.voice.VoiceRecorder
+import com.bitchat.plus.features.voice.normalizeAmplitudeSample
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay

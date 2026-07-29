@@ -21,7 +21,7 @@ import androidx.wear.compose.material3.ListHeader
 import androidx.wear.compose.material3.MaterialTheme
 import androidx.wear.compose.material3.ScreenScaffold
 import androidx.wear.compose.material3.Text
-import com.bitchat.android.services.AppStateStore
+import com.bitchat.plus.services.AppStateStore
 import com.bitchat.watch.mesh.WearMeshService
 import com.bitchat.watch.ui.theme.LocalBitchatPalette
 import com.bitchat.watch.ui.theme.colorForPeer

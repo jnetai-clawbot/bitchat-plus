@@ -1,11 +1,11 @@
-package com.bitchat.android.ui
+package com.bitchat.plus.ui
 
 import android.os.Build
-import com.bitchat.android.mesh.MeshService
-import com.bitchat.android.mesh.PeerInfo
-import com.bitchat.android.model.BitchatMessage
-import com.bitchat.android.services.AppStateStore
-import com.bitchat.android.services.ContactIdentityResolver
+import com.bitchat.plus.mesh.MeshService
+import com.bitchat.plus.mesh.PeerInfo
+import com.bitchat.plus.model.BitchatMessage
+import com.bitchat.plus.services.AppStateStore
+import com.bitchat.plus.services.ContactIdentityResolver
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestScope
 import org.junit.After

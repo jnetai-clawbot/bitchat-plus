@@ -1,6 +1,6 @@
 package com.bitchat
 
-import com.bitchat.android.mesh.MeshPacketUtils
+import com.bitchat.plus.mesh.MeshPacketUtils
 import junit.framework.TestCase.assertEquals
 import org.junit.Test
 

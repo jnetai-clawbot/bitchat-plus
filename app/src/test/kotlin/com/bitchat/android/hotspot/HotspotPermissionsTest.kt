@@ -1,4 +1,4 @@
-package com.bitchat.android.hotspot
+package com.bitchat.plus.hotspot
 
 import android.Manifest
 import org.junit.Assert.assertEquals

@@ -1,8 +1,8 @@
-package com.bitchat.android.noise
+package com.bitchat.plus.noise
 
-import com.bitchat.android.noise.southernstorm.protocol.CipherState
-import com.bitchat.android.noise.southernstorm.protocol.HandshakeState
-import com.bitchat.android.noise.southernstorm.protocol.Noise
+import com.bitchat.plus.noise.southernstorm.protocol.CipherState
+import com.bitchat.plus.noise.southernstorm.protocol.HandshakeState
+import com.bitchat.plus.noise.southernstorm.protocol.Noise
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertThrows

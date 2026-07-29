@@ -1,4 +1,4 @@
-package com.bitchat.android.services.meshgraph
+package com.bitchat.plus.services.meshgraph
 
 import org.junit.Assert.*
 import org.junit.Test

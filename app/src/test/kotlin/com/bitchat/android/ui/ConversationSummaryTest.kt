@@ -1,8 +1,8 @@
-package com.bitchat.android.ui
+package com.bitchat.plus.ui
 
-import com.bitchat.android.model.BitchatMessage
-import com.bitchat.android.model.BitchatMessageType
-import com.bitchat.android.services.PrivateMessageArrivalOrder
+import com.bitchat.plus.model.BitchatMessage
+import com.bitchat.plus.model.BitchatMessageType
+import com.bitchat.plus.services.PrivateMessageArrivalOrder
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse

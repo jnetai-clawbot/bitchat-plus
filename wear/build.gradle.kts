@@ -66,46 +66,46 @@ android {
 // onboarding, nostr (except pure-Kotlin Bech32), net, geohash, wifi-aware, hotspot, voice
 // features, and the phone's foreground service.
 val sharedSourceIncludes = listOf(
-    "com/bitchat/android/protocol/**",
-    "com/bitchat/android/noise/**",
-    "com/bitchat/android/crypto/**",
-    "com/bitchat/android/identity/**",
-    "com/bitchat/android/mesh/**",
-    "com/bitchat/android/model/**",
-    "com/bitchat/android/sync/**",
-    "com/bitchat/android/favorites/**",
-    "com/bitchat/android/services/AppStateStore.kt",
-    "com/bitchat/android/services/ContactDirectory.kt",
-    "com/bitchat/android/services/ContactIdentityResolver.kt",
-    "com/bitchat/android/services/ConversationRepository.kt",
-    "com/bitchat/android/services/ConversationStorageCipher.kt",
-    "com/bitchat/android/services/PrivateMessageArrivalOrder.kt",
-    "com/bitchat/android/services/SeenMessageStore.kt",
-    "com/bitchat/android/services/VerificationService.kt",
-    "com/bitchat/android/services/meshgraph/**",
-    "com/bitchat/android/service/TransportBridgeService.kt",
-    "com/bitchat/android/nostr/Bech32.kt",
-    "com/bitchat/android/nostr/GeohashAliasRegistry.kt",
-    "com/bitchat/android/features/file/FileUtils.kt",
-    "com/bitchat/android/features/voice/**",
-    "com/bitchat/android/ui/debug/DebugSettingsManager.kt",
-    "com/bitchat/android/ui/debug/DebugPreferenceManager.kt",
-    "com/bitchat/android/ui/NotificationTextUtils.kt",
-    "com/bitchat/android/util/AppConstants.kt",
-    "com/bitchat/android/util/ByteArrayExtensions.kt",
-    "com/bitchat/android/util/ByteArrayWrapper.kt",
-    "com/bitchat/android/util/BinaryEncodingUtils.kt",
+    "com/bitchat/plus/protocol/**",
+    "com/bitchat/plus/noise/**",
+    "com/bitchat/plus/crypto/**",
+    "com/bitchat/plus/identity/**",
+    "com/bitchat/plus/mesh/**",
+    "com/bitchat/plus/model/**",
+    "com/bitchat/plus/sync/**",
+    "com/bitchat/plus/favorites/**",
+    "com/bitchat/plus/services/AppStateStore.kt",
+    "com/bitchat/plus/services/ContactDirectory.kt",
+    "com/bitchat/plus/services/ContactIdentityResolver.kt",
+    "com/bitchat/plus/services/ConversationRepository.kt",
+    "com/bitchat/plus/services/ConversationStorageCipher.kt",
+    "com/bitchat/plus/services/PrivateMessageArrivalOrder.kt",
+    "com/bitchat/plus/services/SeenMessageStore.kt",
+    "com/bitchat/plus/services/VerificationService.kt",
+    "com/bitchat/plus/services/meshgraph/**",
+    "com/bitchat/plus/service/TransportBridgeService.kt",
+    "com/bitchat/plus/nostr/Bech32.kt",
+    "com/bitchat/plus/nostr/GeohashAliasRegistry.kt",
+    "com/bitchat/plus/features/file/FileUtils.kt",
+    "com/bitchat/plus/features/voice/**",
+    "com/bitchat/plus/ui/debug/DebugSettingsManager.kt",
+    "com/bitchat/plus/ui/debug/DebugPreferenceManager.kt",
+    "com/bitchat/plus/ui/NotificationTextUtils.kt",
+    "com/bitchat/plus/util/AppConstants.kt",
+    "com/bitchat/plus/util/ByteArrayExtensions.kt",
+    "com/bitchat/plus/util/ByteArrayWrapper.kt",
+    "com/bitchat/plus/util/BinaryEncodingUtils.kt",
 )
 val sharedSourceExcludes = listOf(
-    "com/bitchat/android/model/FileSharingManager.kt",
+    "com/bitchat/plus/model/FileSharingManager.kt",
     // Legacy phone monolith and Wi-Fi Aware multiplexer; the watch composes its own service
     // (MeshCore-style) in M2 instead of reusing these.
-    "com/bitchat/android/mesh/BluetoothMeshService.kt",
-    "com/bitchat/android/mesh/UnifiedMeshService.kt",
+    "com/bitchat/plus/mesh/BluetoothMeshService.kt",
+    "com/bitchat/plus/mesh/UnifiedMeshService.kt",
     // Phone permission policy additionally requires location (legacy BLE); the watch app
     // declares Bluetooth permissions only, so it ships its own same-FQN variant in
     // wear/src/main (Bluetooth-only check).
-    "com/bitchat/android/mesh/BluetoothPermissionManager.kt",
+    "com/bitchat/plus/mesh/BluetoothPermissionManager.kt",
 )
 
 val syncSharedAppSources = tasks.register<Sync>("syncSharedAppSources") {
@@ -122,15 +122,15 @@ val syncSharedAppSources = tasks.register<Sync>("syncSharedAppSources") {
 val syncSharedAppTests = tasks.register<Sync>("syncSharedAppTests") {
     from("../app/src/test/java") {
         include(
-            "com/bitchat/android/protocol/**",
-            "com/bitchat/android/crypto/**",
-            "com/bitchat/android/mesh/**",
+            "com/bitchat/plus/protocol/**",
+            "com/bitchat/plus/crypto/**",
+            "com/bitchat/plus/mesh/**",
         )
     }
     from("../app/src/test/kotlin") {
         include(
             "android/**",
-            "com/bitchat/android/mesh/**",
+            "com/bitchat/plus/mesh/**",
             "com/bitchat/FileTransferTest.kt",
         )
     }

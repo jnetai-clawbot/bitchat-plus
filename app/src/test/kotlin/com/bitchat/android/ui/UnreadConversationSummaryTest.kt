@@ -1,6 +1,6 @@
-package com.bitchat.android.ui
+package com.bitchat.plus.ui
 
-import com.bitchat.android.model.BitchatMessage
+import com.bitchat.plus.model.BitchatMessage
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test

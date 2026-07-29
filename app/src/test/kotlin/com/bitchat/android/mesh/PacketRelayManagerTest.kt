@@ -1,10 +1,10 @@
 
-package com.bitchat.android.mesh
+package com.bitchat.plus.mesh
 
-import com.bitchat.android.model.RoutedPacket
-import com.bitchat.android.protocol.BitchatPacket
-import com.bitchat.android.protocol.MessageType
-import com.bitchat.android.util.toHexString
+import com.bitchat.plus.model.RoutedPacket
+import com.bitchat.plus.protocol.BitchatPacket
+import com.bitchat.plus.protocol.MessageType
+import com.bitchat.plus.util.toHexString
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Before

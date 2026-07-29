@@ -1,16 +1,16 @@
-package com.bitchat.android.ui
+package com.bitchat.plus.ui
 
-import com.bitchat.android.mesh.MeshService
-import com.bitchat.android.mesh.PeerInfo
-import com.bitchat.android.mesh.PreparedPrivateMediaTransfer
-import com.bitchat.android.mesh.PrivateMediaPreparation
-import com.bitchat.android.mesh.PrivateMediaWireMode
-import com.bitchat.android.model.BitchatMessageType
-import com.bitchat.android.model.DeliveryStatus
-import com.bitchat.android.services.AppStateStore
-import com.bitchat.android.services.ContactIdentityResolver
-import com.bitchat.android.services.ConversationRepository
-import com.bitchat.android.services.InMemoryConversationStorageCipher
+import com.bitchat.plus.mesh.MeshService
+import com.bitchat.plus.mesh.PeerInfo
+import com.bitchat.plus.mesh.PreparedPrivateMediaTransfer
+import com.bitchat.plus.mesh.PrivateMediaPreparation
+import com.bitchat.plus.mesh.PrivateMediaWireMode
+import com.bitchat.plus.model.BitchatMessageType
+import com.bitchat.plus.model.DeliveryStatus
+import com.bitchat.plus.services.AppStateStore
+import com.bitchat.plus.services.ContactIdentityResolver
+import com.bitchat.plus.services.ConversationRepository
+import com.bitchat.plus.services.InMemoryConversationStorageCipher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -97,7 +97,7 @@ class MediaSendingManagerMigrationTest {
         val messages = state.privateChats.value[peerID].orEmpty()
         assertEquals(1, messages.size)
         assertTrue(messages.single().content.contains("too many fragments"))
-        assertTrue(messages.none { it.type == com.bitchat.android.model.BitchatMessageType.Image })
+        assertTrue(messages.none { it.type == com.bitchat.plus.model.BitchatMessageType.Image })
         assertEquals(null, manager.legacyPrivateMediaConsent.value)
         verify(mesh, never()).sendFilePrivate(any(), any())
     }
@@ -150,7 +150,7 @@ class MediaSendingManagerMigrationTest {
         val messages = state.privateChats.value[peerID].orEmpty()
         assertEquals(1, messages.size)
         assertTrue(messages.single().content.contains("previously pinned"))
-        assertTrue(messages.none { it.type == com.bitchat.android.model.BitchatMessageType.Image })
+        assertTrue(messages.none { it.type == com.bitchat.plus.model.BitchatMessageType.Image })
         verify(mesh, never()).sendFilePrivate(any(), any())
     }
 
@@ -419,7 +419,7 @@ class MediaSendingManagerMigrationTest {
             val messages = state.privateChats.value[peerID].orEmpty()
             assertEquals(1, messages.size)
             assertTrue(messages.single().content.contains("too large"))
-            assertTrue(messages.none { it.type == com.bitchat.android.model.BitchatMessageType.Image })
+            assertTrue(messages.none { it.type == com.bitchat.plus.model.BitchatMessageType.Image })
             assertTrue(state.getMessagesValue().none { it.content.contains("too large") })
             verify(mesh, never()).prepareFilePrivate(any(), any(), any(), any())
         } finally {

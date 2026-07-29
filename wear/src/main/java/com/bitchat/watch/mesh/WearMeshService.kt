@@ -3,17 +3,17 @@ package com.bitchat.watch.mesh
 import android.bluetooth.BluetoothDevice
 import android.content.Context
 import android.util.Log
-import com.bitchat.android.crypto.EncryptionService
-import com.bitchat.android.mesh.BluetoothConnectionManager
-import com.bitchat.android.mesh.BluetoothConnectionManagerDelegate
-import com.bitchat.android.mesh.DirectLinkAnnouncementPolicy
-import com.bitchat.android.mesh.MeshCore
-import com.bitchat.android.mesh.MeshTransport
-import com.bitchat.android.model.RoutedPacket
-import com.bitchat.android.protocol.BitchatPacket
-import com.bitchat.android.services.AppStateStore
-import com.bitchat.android.sync.GossipSyncManager
-import com.bitchat.android.util.AppConstants
+import com.bitchat.plus.crypto.EncryptionService
+import com.bitchat.plus.mesh.BluetoothConnectionManager
+import com.bitchat.plus.mesh.BluetoothConnectionManagerDelegate
+import com.bitchat.plus.mesh.DirectLinkAnnouncementPolicy
+import com.bitchat.plus.mesh.MeshCore
+import com.bitchat.plus.mesh.MeshTransport
+import com.bitchat.plus.model.RoutedPacket
+import com.bitchat.plus.protocol.BitchatPacket
+import com.bitchat.plus.services.AppStateStore
+import com.bitchat.plus.sync.GossipSyncManager
+import com.bitchat.plus.util.AppConstants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -60,7 +60,7 @@ class WearMeshService private constructor(private val context: Context) {
     private var isActive = false
 
     /** UI hook fired for every incoming private message (after storing). */
-    var onPrivateMessage: ((com.bitchat.android.model.BitchatMessage) -> Unit)? = null
+    var onPrivateMessage: ((com.bitchat.plus.model.BitchatMessage) -> Unit)? = null
 
     init {
         meshCore = MeshCore(
@@ -148,7 +148,7 @@ class WearMeshService private constructor(private val context: Context) {
                 ingressLinkID: String
             ) {
                 try {
-                    com.bitchat.android.ui.debug.DebugSettingsManager.getInstance().logIncoming(
+                    com.bitchat.plus.ui.debug.DebugSettingsManager.getInstance().logIncoming(
                         packet = packet,
                         fromPeerID = peerID,
                         fromNickname = null,
@@ -228,7 +228,7 @@ class WearMeshService private constructor(private val context: Context) {
     }
 
     private fun handleMessageReceived(
-        message: com.bitchat.android.model.BitchatMessage
+        message: com.bitchat.plus.model.BitchatMessage
     ): Boolean = try {
         when {
             message.isPrivate -> {
@@ -342,7 +342,7 @@ class WearMeshService private constructor(private val context: Context) {
         return connectionManager.connectToAddress(address)
     }
 
-    fun sendFileBroadcast(file: com.bitchat.android.model.BitchatFilePacket) {
+    fun sendFileBroadcast(file: com.bitchat.plus.model.BitchatFilePacket) {
         meshCore.sendFileBroadcast(file)
     }
 
@@ -351,26 +351,26 @@ class WearMeshService private constructor(private val context: Context) {
      * dispatchFileSend): ensures an established session, then retries transient
      * preparation states (AwaitingPeerState/NeedsHandshake) before giving up.
      */
-    fun sendFilePrivateEncrypted(recipientPeerID: String, file: com.bitchat.android.model.BitchatFilePacket) {
+    fun sendFilePrivateEncrypted(recipientPeerID: String, file: com.bitchat.plus.model.BitchatFilePacket) {
         serviceScope.launch {
             val sessionDeadline = System.currentTimeMillis() + 15_000
             while (!hasEstablishedSession(recipientPeerID) && System.currentTimeMillis() < sessionDeadline) {
                 try { initiateNoiseHandshake(recipientPeerID) } catch (_: Exception) { }
                 delay(500)
             }
-            val transferId = com.bitchat.android.mesh.MeshPacketUtils.sha256Hex(
+            val transferId = com.bitchat.plus.mesh.MeshPacketUtils.sha256Hex(
                 file.encode() ?: return@launch
             )
             val prepDeadline = System.currentTimeMillis() + 30_000
             while (System.currentTimeMillis() < prepDeadline) {
                 when (val prep = meshCore.prepareFilePrivate(recipientPeerID, file, transferId, allowLegacyFallback = false)) {
-                    is com.bitchat.android.mesh.PrivateMediaPreparation.Ready -> {
+                    is com.bitchat.plus.mesh.PrivateMediaPreparation.Ready -> {
                         prep.transfer.commit()
                         return@launch
                     }
-                    com.bitchat.android.mesh.PrivateMediaPreparation.AwaitingPeerState,
-                    com.bitchat.android.mesh.PrivateMediaPreparation.NeedsHandshake -> {
-                        if (prep == com.bitchat.android.mesh.PrivateMediaPreparation.NeedsHandshake) {
+                    com.bitchat.plus.mesh.PrivateMediaPreparation.AwaitingPeerState,
+                    com.bitchat.plus.mesh.PrivateMediaPreparation.NeedsHandshake -> {
+                        if (prep == com.bitchat.plus.mesh.PrivateMediaPreparation.NeedsHandshake) {
                             try { initiateNoiseHandshake(recipientPeerID) } catch (_: Exception) { }
                         }
                         delay(500)

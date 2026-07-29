@@ -1,4 +1,4 @@
-package com.bitchat.android.mesh
+package com.bitchat.plus.mesh
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay

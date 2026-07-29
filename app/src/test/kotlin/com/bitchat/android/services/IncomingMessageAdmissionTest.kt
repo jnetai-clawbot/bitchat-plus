@@ -1,14 +1,14 @@
-package com.bitchat.android.services
+package com.bitchat.plus.services
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
-import com.bitchat.android.model.BitchatMessage
-import com.bitchat.android.model.DeliveryStatus
-import com.bitchat.android.ui.ChatState
-import com.bitchat.android.ui.DataManager
-import com.bitchat.android.ui.MessageManager
-import com.bitchat.android.ui.NoiseSessionDelegate
-import com.bitchat.android.ui.PrivateChatManager
+import com.bitchat.plus.model.BitchatMessage
+import com.bitchat.plus.model.DeliveryStatus
+import com.bitchat.plus.ui.ChatState
+import com.bitchat.plus.ui.DataManager
+import com.bitchat.plus.ui.MessageManager
+import com.bitchat.plus.ui.NoiseSessionDelegate
+import com.bitchat.plus.ui.PrivateChatManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestScope

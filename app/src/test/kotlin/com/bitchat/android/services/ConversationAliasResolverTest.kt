@@ -1,7 +1,7 @@
-package com.bitchat.android.services
+package com.bitchat.plus.services
 
-import com.bitchat.android.model.BitchatMessage
-import com.bitchat.android.ui.ChatState
+import com.bitchat.plus.model.BitchatMessage
+import com.bitchat.plus.ui.ChatState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
