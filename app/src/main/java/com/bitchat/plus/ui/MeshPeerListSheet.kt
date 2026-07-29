@@ -6,6 +6,8 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.*
 import com.bitchat.plus.ui.theme.BitchatFontFamily
 import com.bitchat.plus.R
+import android.content.Intent
+import android.location.Location
 import android.text.format.DateUtils
 import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
@@ -1930,6 +1932,164 @@ fun PrivateChatSheet(
                     Spacer(modifier = Modifier.height(ChatHeaderHeight))
 
                     HorizontalDivider(thickness = 1.dp, color = colorScheme.outlineVariant)
+
+                    // Location sharing panel for private chat
+                    val context = LocalContext.current
+                    val locationManager = remember { com.bitchat.plus.geohash.LocationChannelManager.getInstance(context) }
+                    val locationEnabled by locationManager.locationServicesEnabled.collectAsStateWithLifecycle()
+                    val myLocation by locationManager.currentLocation.collectAsStateWithLifecycle()
+                    val peerLocation by locationManager.peerLocation.collectAsStateWithLifecycle()
+
+                    if (locationEnabled && myLocation != null) {
+                        Surface(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 12.dp, vertical = 6.dp),
+                            color = colorScheme.surfaceVariant.copy(alpha = 0.5f),
+                            shape = RoundedCornerShape(12.dp)
+                        ) {
+                            Column(
+                                modifier = Modifier.padding(12.dp),
+                                verticalArrangement = Arrangement.spacedBy(6.dp)
+                            ) {
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Filled.LocationOn,
+                                        contentDescription = null,
+                                        tint = colorScheme.primary,
+                                        modifier = Modifier.size(18.dp)
+                                    )
+                                    Text(
+                                        text = "Location Sharing Active",
+                                        style = MaterialTheme.typography.labelMedium,
+                                        fontWeight = FontWeight.Bold,
+                                        color = colorScheme.primary
+                                    )
+                                }
+
+                                Text(
+                                    text = "Your location: %.5f, %.5f".format(
+                                        myLocation!!.latitude,
+                                        myLocation!!.longitude
+                                    ),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    fontFamily = BitchatFontFamily,
+                                    color = colorScheme.onSurfaceVariant
+                                )
+
+                                if (peerLocation != null) {
+                                    val distance = myLocation!!.distanceTo(peerLocation!!)
+                                    val bearing = myLocation!!.bearingTo(peerLocation!!)
+                                    val direction = when {
+                                        bearing < 22.5 || bearing >= 337.5 -> "N"
+                                        bearing < 67.5 -> "NE"
+                                        bearing < 112.5 -> "E"
+                                        bearing < 157.5 -> "SE"
+                                        bearing < 202.5 -> "S"
+                                        bearing < 247.5 -> "SW"
+                                        bearing < 292.5 -> "W"
+                                        bearing < 337.5 -> "NW"
+                                        else -> "N"
+                                    }
+
+                                    Text(
+                                        text = "Their location: %.5f, %.5f".format(
+                                            peerLocation!!.latitude,
+                                            peerLocation!!.longitude
+                                        ),
+                                        style = MaterialTheme.typography.bodySmall,
+                                        fontFamily = BitchatFontFamily,
+                                        color = colorScheme.onSurfaceVariant
+                                    )
+
+                                    Row(
+                                        horizontalArrangement = Arrangement.spacedBy(16.dp)
+                                    ) {
+                                        Text(
+                                            text = "Distance: %.0f m".format(distance),
+                                            style = MaterialTheme.typography.bodySmall,
+                                            fontFamily = BitchatFontFamily,
+                                            fontWeight = FontWeight.Medium,
+                                            color = colorScheme.primary
+                                        )
+                                        Text(
+                                            text = "Direction: $direction (%.0f°)".format(bearing),
+                                            style = MaterialTheme.typography.bodySmall,
+                                            fontFamily = BitchatFontFamily,
+                                            fontWeight = FontWeight.Medium,
+                                            color = colorScheme.primary
+                                        )
+                                    }
+
+                                    TextButton(
+                                        onClick = {
+                                            val uri = "geo:${peerLocation!!.latitude},${peerLocation!!.longitude}?q=${peerLocation!!.latitude},${peerLocation!!.longitude}(Their Location)"
+                                            val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse(uri))
+                                            try {
+                                                context.startActivity(intent)
+                                            } catch (e: Exception) {
+                                                val mapsUri = "https://maps.google.com/maps?q=${peerLocation!!.latitude},${peerLocation!!.longitude}"
+                                                val fallbackIntent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse(mapsUri))
+                                                try {
+                                                    context.startActivity(fallbackIntent)
+                                                } catch (_: Exception) { }
+                                            }
+                                        },
+                                        contentPadding = PaddingValues(horizontal = 8.dp, vertical = 0.dp)
+                                    ) {
+                                        Icon(
+                                            imageVector = Icons.Filled.Map,
+                                            contentDescription = null,
+                                            modifier = Modifier.size(14.dp)
+                                        )
+                                        Spacer(modifier = Modifier.width(4.dp))
+                                        Text(
+                                            text = "Open in Maps",
+                                            style = MaterialTheme.typography.labelSmall,
+                                            fontFamily = BitchatFontFamily
+                                        )
+                                    }
+                                } else {
+                                    Text(
+                                        text = "Waiting for their location...",
+                                        style = MaterialTheme.typography.bodySmall,
+                                        fontFamily = BitchatFontFamily,
+                                        color = palette.textTertiary
+                                    )
+                                }
+                            }
+                        }
+                    } else if (locationEnabled) {
+                        Surface(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 12.dp, vertical = 6.dp),
+                            color = colorScheme.surfaceVariant.copy(alpha = 0.5f),
+                            shape = RoundedCornerShape(12.dp)
+                        ) {
+                            Row(
+                                modifier = Modifier.padding(12.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Filled.LocationOn,
+                                    contentDescription = null,
+                                    tint = palette.textTertiary,
+                                    modifier = Modifier.size(18.dp)
+                                )
+                                Text(
+                                    text = "Acquiring location...",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    fontFamily = BitchatFontFamily,
+                                    color = palette.textTertiary
+                                )
+                            }
+                        }
+                    }
 
                     // Messages list
                     var forceScrollToBottom by remember { mutableStateOf(false) }

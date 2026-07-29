@@ -316,13 +316,21 @@ fun ChatScreen(viewModel: ChatViewModel) {
                         selection = TextRange(newText.length)
                     )
                 },
+                onNicknameLongPress = { fullSenderName ->
+                    // Long press on username - open private chat directly
+                    val (baseName, _) = splitSuffix(fullSenderName)
+                    val peerID = viewModel.getPeerIDForNickname(baseName)
+                    if (peerID != null) {
+                        viewModel.showPrivateChatSheet(peerID)
+                    }
+                },
                 onMessageLongPress = { message ->
-                    // Message long press - open user action sheet with message context
-                    // Extract base nickname from message sender (contains all necessary info)
+                    // Message long press - open private chat with sender
                     val (baseName, _) = splitSuffix(message.sender)
-                    selectedUserForSheet = baseName
-                    selectedMessageForSheet = message
-                    showUserSheet = true
+                    val peerID = viewModel.getPeerIDForNickname(baseName)
+                    if (peerID != null) {
+                        viewModel.showPrivateChatSheet(peerID)
+                    }
                 },
                 onCancelTransfer = { msg ->
                     viewModel.cancelMediaSend(msg.id)

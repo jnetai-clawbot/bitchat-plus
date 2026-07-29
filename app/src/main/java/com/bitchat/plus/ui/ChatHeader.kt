@@ -746,19 +746,17 @@ private fun MainHeader(
             // Tight, because every child below is its own >=44.dp tap target.
             horizontalArrangement = Arrangement.spacedBy(2.dp)
         ) {
-            // Unread private messages badge (click to open most recent DM)
-            if (hasUnreadPrivateMessages.isNotEmpty()) {
-                HeaderIconButton(
-                    onClick = { viewModel.openLatestUnreadPrivateChat() },
-                    contentDescription = stringResource(R.string.cd_unread_private_messages)
-                ) {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_spec_envelope),
-                        contentDescription = stringResource(R.string.cd_unread_private_messages),
-                        modifier = Modifier.size(HeaderIconSize),
-                        tint = palette.accentOrange
-                    )
-                }
+            // Private messages button (always visible)
+            HeaderIconButton(
+                onClick = { viewModel.showMeshPeerList() },
+                contentDescription = "Private Messages"
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_spec_envelope),
+                    contentDescription = "Private Messages",
+                    modifier = Modifier.size(HeaderIconSize),
+                    tint = if (hasUnreadPrivateMessages.isNotEmpty()) palette.accentOrange else colorScheme.onSurfaceVariant
+                )
             }
 
             // Location notes + channel badge: one tight unit so the document glyph and the

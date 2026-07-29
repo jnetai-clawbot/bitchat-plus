@@ -102,6 +102,12 @@ class LocationChannelManager private constructor(private val context: Context) {
     
     val locationServicesEnabled: StateFlow<Boolean> = LiveLocationPrivacyGate.enabled
 
+    private val _currentLocation = MutableStateFlow<android.location.Location?>(null)
+    val currentLocation: StateFlow<android.location.Location?> = _currentLocation
+
+    private val _peerLocation = MutableStateFlow<android.location.Location?>(null)
+    val peerLocation: StateFlow<android.location.Location?> = _peerLocation
+
     private val _systemLocationEnabled = MutableStateFlow(checkSystemLocationEnabled())
     val systemLocationEnabled: StateFlow<Boolean> = _systemLocationEnabled
 
@@ -313,7 +319,7 @@ class LocationChannelManager private constructor(private val context: Context) {
      * change the persisted soft setting when Android's hard permission or system provider is
      * temporarily unavailable.
      */
-    private fun clearLiveLocationState(invalidateAccess: Boolean = true) {
+    internal fun clearLiveLocationState(invalidateAccess: Boolean = true) {
         if (invalidateAccess) LiveLocationPrivacyGate.invalidate()
         cancelLiveLocationWork()
         _isLoadingLocation.value = false
@@ -388,6 +394,7 @@ class LocationChannelManager private constructor(private val context: Context) {
         LiveLocationPrivacyGate.runIfAllowed(token) {
             if (!_systemLocationEnabled.value || !hasRuntimeLocationPermission()) return@runIfAllowed
             _isLoadingLocation.value = false
+            _currentLocation.value = location
             computeChannels(location, token)
             reverseGeocodeIfNeeded(location, token)
         }
@@ -683,4 +690,24 @@ class LocationChannelManager private constructor(private val context: Context) {
         // Unregister receiver
         try { context.unregisterReceiver(locationStateReceiver) } catch (_: Exception) {}
     }
+
+    fun updatePeerLocation(lat: Double, lon: Double) {
+        val loc = android.location.Location("peer").apply {
+            latitude = lat
+            longitude = lon
+        }
+        _peerLocation.value = loc
+    }
+}
+
+fun android.location.Location.bearingTo(dest: android.location.Location): Float {
+    val startLat = Math.toRadians(this.latitude)
+    val startLon = Math.toRadians(this.longitude)
+    val destLat = Math.toRadians(dest.latitude)
+    val destLon = Math.toRadians(dest.longitude)
+    val dLon = destLon - startLon
+    val y = Math.sin(dLon) * Math.cos(destLat)
+    val x = Math.cos(startLat) * Math.sin(destLat) - Math.sin(startLat) * Math.cos(destLat) * Math.cos(dLon)
+    val bearing = Math.toDegrees(Math.atan2(y, x))
+    return ((bearing + 360) % 360).toFloat()
 }

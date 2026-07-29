@@ -183,24 +183,12 @@ fun MessagesList(
     meshService: MeshService,
     modifier: Modifier = Modifier,
     mentionPeerIdentities: Map<String, PeerIdentity>? = null,
-    /**
-     * Extra inset on top of the list's own gutters.
-     *
-     * The chat screen's bars are translucent and the list scrolls underneath them, so the caller
-     * has to reserve room for their heights here rather than by shrinking the viewport.
-     */
     contentPadding: PaddingValues = PaddingValues(0.dp),
-    /**
-     * Identity of the conversation being shown — a channel, a geohash, a peer.
-     *
-     * Everything below that is per-conversation state is keyed on this. Without it, switching
-     * channels reused the previous conversation's scroll offset, follow flag and seen-message set,
-     * so the new channel opened at a stale position and then animated itself into place.
-     */
     conversationKey: Any? = null,
     forceScrollToBottom: Boolean = false,
     onScrolledUpChanged: ((Boolean) -> Unit)? = null,
     onNicknameClick: ((String) -> Unit)? = null,
+    onNicknameLongPress: ((String) -> Unit)? = null,
     onMessageLongPress: ((BitchatMessage) -> Unit)? = null,
     onCancelTransfer: ((BitchatMessage) -> Unit)? = null,
     onImageClick: ((String, List<String>, Int) -> Unit)? = null
@@ -652,6 +640,7 @@ internal fun TextMessageLayout(
     colorScheme: ColorScheme,
     timeFormatter: SimpleDateFormat,
     onNicknameClick: ((String) -> Unit)?,
+    onNicknameLongPress: ((String) -> Unit)?,
     onMessageLongPress: ((BitchatMessage) -> Unit)?,
     modifier: Modifier = Modifier,
     showSender: Boolean = true,
@@ -716,7 +705,14 @@ internal fun TextMessageLayout(
                         false
                     }
                 },
-                onLongPress = handleLongPress,
+                onLongPress = {
+                    if (!isSelf && onNicknameLongPress != null) {
+                        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                        onNicknameLongPress.invoke(message.sender)
+                    } else {
+                        handleLongPress()
+                    }
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = MessageGrouping.SENDER_TOP_PADDING),

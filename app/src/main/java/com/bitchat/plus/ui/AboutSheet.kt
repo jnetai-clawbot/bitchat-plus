@@ -16,6 +16,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Bluetooth
 import androidx.compose.material.icons.filled.Security
 import androidx.compose.material.icons.filled.Speed
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -510,6 +511,30 @@ fun AboutSheet(
                                                 com.bitchat.plus.service.MeshForegroundService.stop(context)
                                             } else {
                                                 com.bitchat.plus.service.MeshForegroundService.start(context)
+                                            }
+                                        }
+                                    )
+
+                                    HorizontalDivider(
+                                        modifier = Modifier.padding(start = 54.dp),
+                                        thickness = 1.dp,
+                                        color = colorScheme.outlineVariant
+                                    )
+
+                                    // Location Sharing Toggle
+                                    val locationManager = remember { com.bitchat.plus.geohash.LocationChannelManager.getInstance(context) }
+                                    val locationEnabled by locationManager.locationServicesEnabled.collectAsStateWithLifecycle()
+                                    SettingsToggleRow(
+                                        icon = Icons.Filled.LocationOn,
+                                        title = "Share Location",
+                                        subtitle = "Allow other users to see your location in private chats",
+                                        checked = locationEnabled,
+                                        onCheckedChange = { enabled ->
+                                            com.bitchat.plus.geohash.LiveLocationPrivacyGate.update(enabled)
+                                            if (enabled) {
+                                                locationManager.enableLocationChannels()
+                                            } else {
+                                                locationManager.clearLiveLocationState()
                                             }
                                         }
                                     )
